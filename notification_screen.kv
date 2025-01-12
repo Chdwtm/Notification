@@ -1,0 +1,46 @@
+<NotificationScreen>:
+    notification_list: rv
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+
+    BoxLayout:
+        size_hint_y: None
+        height: '48dp'
+        Button:
+            text: 'Load Notifications'
+            on_press: root.load_notifications()
+
+    RecycleView:
+        id: rv
+        viewclass: 'NotificationButton'
+        RecycleBoxLayout:
+            default_size: None, dp(56)
+            default_size_hint: 1, None
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: 'vertical'
+
+<NotificationButton>:
+    orientation: 'horizontal'
+    size_hint_y: None
+    height: '48dp'
+    Label:
+        text: root.text
+    Button:
+        text: 'Delete'
+        size_hint_x: None
+        width: '80dp'
+        on_press: app.root.delete_notification(root.text)
+
+<EditNotificationPopup>:
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+    TextInput:
+        id: edit_text
+        text: root.notification_text
+        multiline: True
+    Button:
+        text: 'Save'
+        on_press: root.save()

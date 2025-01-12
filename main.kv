@@ -1,0 +1,11 @@
+<NotificationScreen>:
+    notification_list: rv
+    RecycleView:
+        id: rv
+        viewclass: 'NotificationButton'
+        RecycleBoxLayout:
+            default_size: None, dp(56)
+            default_size_hint: 1, None
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: 'vertical'
